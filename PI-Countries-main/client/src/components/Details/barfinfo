@@ -1,0 +1,67 @@
+// import React from 'react'
+// import { useEffect } from 'react'
+// //import { getCountryByName } from '../../redux/actions'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { Link, useParams } from 'react-router-dom'
+// import { detailCountries } from '../../redux/actions/index.js'
+
+// export default function Details () {
+//   const { id } = useParams()
+//   let countriesDetail = useSelector(state => state.countriesDetail)
+//   const dispatch = useDispatch()
+
+//   useEffect(() => {
+//     dispatch(detailCountries(id))
+//   }, [])
+
+//   return (
+//     <div className='detailbackground'>
+//       <div className='carddetail2'>
+//         <div className='card-detail'>
+//           <h1>{countriesDetail?.name}</h1>
+//           <h5>ID:{countriesDetail?.id}</h5>
+//           <h5>CONTINENT:{countriesDetail?.region}</h5>
+//           <img
+//             className='imgdetailstyle'
+//             src={countriesDetail?.flag}
+//             alt='img not found'
+//           />
+//           <h5>SUBREGION:{countriesDetail?.subregion}</h5>
+//           <h5>AREA:{countriesDetail?.area}</h5>
+//           <h5>CAPITAL:{countriesDetail?.capital}</h5>
+//           <h5>POPULATION:{countriesDetail?.population}</h5>
+//           {/* </div> 
+//                   <div className="card-detail">  */}
+//           <h5>ACTIVITIES</h5>
+
+//           {countriesDetail?.activities?.length ? (
+//             countriesDetail?.activities.map(a => {
+//               return (
+//                 <div key={a.id}>
+//                   <h5>{a.name}</h5>
+//                   <h5>Difficulty: {a.difficulty}</h5>
+//                   <h5>Duration: {a.duration} mins</h5>
+//                   <h5>Season: {a.season}</h5>
+//                 </div>
+//               )
+//             })
+//           ) : (
+//             <h5> There are no activities for this country</h5>
+//           )}
+//         </div>
+
+//         {/* <Link to='/home'>
+//           <button className='buttonvolver'>Back</button>
+//         </Link> */}
+//       </div>
+//     </div>
+//   )
+ //}
+ // if(pagination === 1){
+            //   currentCountry.map(country => {
+            //     return (<Country 
+            //       name ={country.name}  
+            //       image={country.image}
+            //       continents={country.continents}
+            //       id={country.id} />
+            //     )} else {

@@ -1,0 +1,33 @@
+.details {
+  display: flex;
+  background-color: black;
+  color: white;
+  margin-left: 30%;
+  margin-right: 60%;
+  margin-top: 2%;
+  margin-bottom: 10%;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 40px;
+  border: 5px solid white;
+  text-align: center;
+  box-shadow: 10px 10px 5px black;
+  width: 35%;
+}
+.details:hover {
+  transform: scale(1.1);
+  transition: 2s ease-in-out;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-around;
+}
+.caButton,
+.bkButton {
+  height: 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px black;
+  margin-top: 20px;
+}

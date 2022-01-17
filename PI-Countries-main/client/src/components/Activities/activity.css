@@ -1,0 +1,29 @@
+select{
+    display: flex;
+    align-self: center;
+    justify-items: center;
+}
+
+
+label{
+    font-size: 20px;
+  
+}
+
+
+.h2{
+    padding: 30px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    font-weight: lighter;
+}
+input{
+    border-radius: 5px;
+}
+
+button{
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px black;
+    margin-top: 20px;
+}
