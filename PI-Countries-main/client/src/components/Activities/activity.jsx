@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './activity.css'
 import { Link, useNavigate } from 'react-router-dom'
-import {
-  getCountries,
-  postActivity,
-  createActivity
-} from '../../redux/actions/index'
+import { getCountries, postActivity } from '../../redux/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
 
 function validate (input) {
@@ -43,7 +39,6 @@ export default function CreateActivity () {
 
   useEffect(() => {
     dispatch(getCountries())
-    dispatch(createActivity())
   }, [dispatch])
 
   function handleChange (e) {

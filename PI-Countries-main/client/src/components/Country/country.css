@@ -46,6 +46,7 @@
   height: 25px;
   color: rgb(39, 37, 37);
   box-shadow: 5px 5px 5px black;
+  font-size: smaller;
 }
 
 .btnMore:hover {
