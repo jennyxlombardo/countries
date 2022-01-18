@@ -6,12 +6,11 @@ import { filterByActivity, getActivity } from '../../redux/actions'
 
 export default function FilterByActivities () {
   const dispatch = useDispatch()
-  const activity = useSelector(state => state.activity)
+  const activity = useSelector(state => state.allActivity)
 
   function handleFilterActivities (e) {
     e.preventDefault()
     dispatch(filterByActivity(e.target.value))
-   
   }
   useEffect(()=>{
     dispatch( getActivity())

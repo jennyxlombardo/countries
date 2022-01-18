@@ -25,7 +25,7 @@ function validate (input) {
 }
 export default function CreateActivity () {
   const dispatch = useDispatch()
-  const country = useSelector(e => e.countries) || []
+  const country = useSelector(e => e.countries)
   const history = useNavigate()
   const [errors, setErrors] = useState({})
 
@@ -56,6 +56,7 @@ export default function CreateActivity () {
   }
 
   function handleCheck (e) {
+    console.log(input)
     if (e.target.checked)
       setInput({
         ...input,
@@ -71,28 +72,51 @@ export default function CreateActivity () {
   }
 
   function handleSubmit (e) {
-    e.preventDefault()
-    console.log(input)
-    if (
-      !input.name &&
-      !input.difficulty &&
-      !input.season &&
-      !input.duration &&
-      !input.countries.length
-    ) {
-      alert('Please complete all the fields')
-    } else {
-      dispatch(postActivity(input))
-      alert('Activity created')
-      setInput({
-        name: '',
-        difficulty: '',
-        duration: '',
-        season: '',
-        countries: []
-      })
-      history('/home')
-    }
+  //   if (
+  //     input.name &&
+  //     input.difficulty &&
+  //     input.season &&
+  //     input.duration &&
+  //     input.countries.length
+  //   ) {
+  //     e.preventDefault()
+  //     dispatch(postActivity(input))
+  //     alert('Activity created successfully')
+  //     setInput({
+  //       name: '',
+  //       difficulty: '',
+  //       duration: '',
+  //       season: '',
+  //       countries: []
+  //     })
+  //     history('/home')
+  //   } else {
+  //     e.preventDefault()
+  //     alert('Please fill out all the fields')
+  //   }
+  // }
+  e.preventDefault()
+  console.log(input)
+  if (
+    !input.name &&
+    !input.difficulty &&
+    !input.season &&
+    !input.duration &&
+    !input.countries.length
+  ) {
+    alert('Please complete all the fields')
+  } else {
+    dispatch(postActivity(input))
+    alert('Activity created')
+    setInput({
+      name: '',
+      difficulty: '',
+      duration: '',
+      season: '',
+      countries: []
+    })
+    history('/home')
+  }
   }
 
   function handleSelect (e) {
@@ -141,7 +165,7 @@ export default function CreateActivity () {
         <div>
           <label>Difficulty</label>
           <br />
-          <label for='1'>1</label>
+          <label htmlFor='1'>1</label>
           <input
             type='radio'
             id='1'
@@ -149,7 +173,7 @@ export default function CreateActivity () {
             value='1'
             onChange={e => handleCheck(e)}
           />
-          <label for='2'>2</label>
+          <label htmlFor='2'>2</label>
           <input
             type='radio'
             id='2'
@@ -157,7 +181,7 @@ export default function CreateActivity () {
             value='2'
             onChange={e => handleCheck(e)}
           />
-          <label for='3'>3</label>
+          <label htmlFor='3'>3</label>
           <input
             type='radio'
             id='3'
@@ -165,7 +189,7 @@ export default function CreateActivity () {
             value='3'
             onChange={e => handleCheck(e)}
           />
-          <label for='4'>4</label>
+          <label htmlFor='4'>4</label>
           <input
             type='radio'
             id='4'
@@ -173,7 +197,7 @@ export default function CreateActivity () {
             value='4'
             onChange={e => handleCheck(e)}
           />
-          <label for='5'>5</label>
+          <label htmlFor='5'>5</label>
           <input
             type='radio'
             id='5'
@@ -190,31 +214,35 @@ export default function CreateActivity () {
           <input
             type='checkbox'
             name='season'
+            value='Summer'
             id='Summer'
             onChange={e => handleCheck(e)}
           />
-          <label for='Summer'>Summer</label>
+          <label htmlFor='Summer'>Summer</label>
           <input
             type='checkbox'
             name='season'
+            value='Spring'
             id='Spring'
             onChange={e => handleCheck(e)}
           />
-          <label for='Spring'>Spring</label>
+          <label htmlFor='Spring'>Spring</label>
           <input
             type='checkbox'
             name='season'
+            value='Winter'
             id='Winter'
             onChange={e => handleCheck(e)}
           />
-          <label for='Winter'>Winter</label>
+          <label htmlFor='Winter'>Winter</label>
           <input
             type='checkbox'
             name='season'
+            value='Fall'
             id='Fall'
             onChange={e => handleCheck(e)}
           />
-          <label for='Fall'>Fall</label>
+          <label htmlFor='Fall'>Fall</label>
           {errors.season && <p className='error'>{errors.season}</p>}
           <br />
           <div>
@@ -225,7 +253,7 @@ export default function CreateActivity () {
               placeholder='example: 4hs30min'
               name='duration'
               type='text'
-              // onChange={e => handleChange(e)}
+              onChange={e => handleChange(e)}
             />
             {errors.duration && <p className='error'>{errors.duration}</p>}
           </div>
@@ -235,7 +263,7 @@ export default function CreateActivity () {
             <select required onChange={e => handleSelect(e)}>
               <option>Select Country</option>
               {country.map(e => (
-                <option value={e.name}>{e.name}</option>
+                <option key={e.name}value={e.name}>{e.name}</option>
               ))}
             </select>
           </div>
@@ -244,7 +272,7 @@ export default function CreateActivity () {
         <ul>
           <li>{input.countries.map(el => el)}</li>
         </ul>
-        <button type='submit' onClick={e => handleSubmit(e)}>
+        <button type='submit' >
           Create
         </button>
       </form>
