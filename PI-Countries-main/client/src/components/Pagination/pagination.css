@@ -1,9 +1,7 @@
 .number {
-    box-shadow: 2px 2px 2px black;
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .number:hover {
-    transform: scale(1.3);
+  transform: scale(1.3);
 }
-

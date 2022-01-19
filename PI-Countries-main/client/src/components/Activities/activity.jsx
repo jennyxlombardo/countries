@@ -72,29 +72,7 @@ export default function CreateActivity () {
   }
 
   function handleSubmit (e) {
-  //   if (
-  //     input.name &&
-  //     input.difficulty &&
-  //     input.season &&
-  //     input.duration &&
-  //     input.countries.length
-  //   ) {
-  //     e.preventDefault()
-  //     dispatch(postActivity(input))
-  //     alert('Activity created successfully')
-  //     setInput({
-  //       name: '',
-  //       difficulty: '',
-  //       duration: '',
-  //       season: '',
-  //       countries: []
-  //     })
-  //     history('/home')
-  //   } else {
-  //     e.preventDefault()
-  //     alert('Please fill out all the fields')
-  //   }
-  // }
+  
   e.preventDefault()
   console.log(input)
   if (
@@ -127,12 +105,7 @@ export default function CreateActivity () {
     console.log(input)
   }
 
-  // function handleDelete (e) {
-  //   setInput({
-  //     ...input,
-  //     country: input.country.filter(country => country !== e)
-  //   })
-  // }
+  
   function handleDelete (e) {
     setInput({
       ...input,
@@ -140,7 +113,7 @@ export default function CreateActivity () {
     })
   }
   return (
-    <div>
+    <div >
       <br />
       <div className='createActivity'>
         <Link to='/home' className='back'>
@@ -148,7 +121,7 @@ export default function CreateActivity () {
         </Link>
       </div>
       <h2>Create Activity</h2>
-      <form onSubmit={e => handleSubmit(e)}>
+      <form className="form" onSubmit={e => handleSubmit(e)}>
         <div>
           <label>Name</label>
           <br />
@@ -208,7 +181,8 @@ export default function CreateActivity () {
           {errors.difficulty && <p className='error'>{errors.difficulty}</p>}
         </div>
         <br />
-        <div>
+        
+          <div>
           <label>Season</label>
           <br />
           <input
@@ -246,6 +220,7 @@ export default function CreateActivity () {
           {errors.season && <p className='error'>{errors.season}</p>}
           <br />
           <div>
+         
             <br />
             <label>Duration</label>
             <br />
@@ -261,22 +236,24 @@ export default function CreateActivity () {
 
           <div className='select'>
             <select required onChange={e => handleSelect(e)}>
-              <option>Select Country</option>
+              <option className='optionActCon'>Select Country</option>
               {country.map(e => (
-                <option key={e.name}value={e.name}>{e.name}</option>
+                <option key={e.name}value={e.name} >{e.name}</option>
               ))}
             </select>
           </div>
         </div>
 
-        <ul>
-          <li>{input.countries.map(el => el)}</li>
-        </ul>
+       
         <button type='submit' >
           Create
         </button>
       </form>
-
+      <div>
+      <ul>
+          <li>{input.countries.map(el => el)}</li>
+        </ul>
+        </div>
       {input.countries.map(el => (
         <div className=''>
           <p>{el}</p>

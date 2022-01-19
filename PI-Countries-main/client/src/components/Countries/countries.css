@@ -1,5 +1,5 @@
-body{
-    background-image: url(./144993-black-and-blue-lights-background.jpg);
+body {
+  background-image: url(./144993-black-and-blue-lights-background.jpg);
 }
 
 .pagination {
@@ -9,17 +9,7 @@ body{
   transition: background-color 0.3s;
   text-align: center;
   border-radius: 5px;
-  
   justify-content: center;
   margin-bottom: 50px;
- flex-wrap: wrap;
+  flex-wrap: wrap;
 }
-
-
-
-/* 
-.flags {
-  margin-top: 20px;
-  align-items: center;
-  box-shadow: 10px 10px;
-} */

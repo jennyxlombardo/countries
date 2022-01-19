@@ -1,26 +1,30 @@
 import React, { useState } from 'react'
-import './population.css'
+import { useEffect } from 'react'
+//import { sort } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
 import { orderByPopulation } from '../../redux/actions'
+import { ASCENDENTE, DESCENDENTE } from '../variables/sort'
 
 export default function Population () {
   const dispatch = useDispatch()
   // eslint-disable-next-line
   const [orderPopulation, setOrderPopulation] = useState('')
 
+  useEffect(() => {
+    dispatch(orderByPopulation(orderPopulation))
+  }, [orderPopulation])
+
   function handlePopulationSort (e) {
     e.preventDefault()
-    dispatch(orderByPopulation(e.target.value))
-    // setCurrentPage(1)
-    setOrderPopulation(`Ordenado ${e.target.value}`)
+    setOrderPopulation(e.target.value)
   }
   return (
-    <div className='pop'>
-      <h3 className='childPop'>Population</h3>
-      <select className='selectfilter' onChange={e => handlePopulationSort(e)}>
+    <div>
+      <h3>Population</h3>
+      <select onChange={e => handlePopulationSort(e)}>
         <option value='All'>Select</option>
-        <option value='asc'>Ascending</option>
-        <option value='desc'>Descending</option>
+        <option value={ASCENDENTE}>Ascending</option>
+        <option value={DESCENDENTE}>Descending</option>
       </select>
     </div>
   )
