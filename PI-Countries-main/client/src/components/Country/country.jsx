@@ -1,7 +1,6 @@
 import './country.css'
 import { Link } from 'react-router-dom'
 
-
 export default function Country ({ name, continents, image, id, population }) {
   return (
     <div className='container'>
@@ -20,7 +19,7 @@ export default function Country ({ name, continents, image, id, population }) {
         </Link>
         <h4>{continents}</h4>
         <h4>{id}</h4>
-        <h4>{population}</h4>
+        <h4>Pop: {population}</h4>
       </div>
     </div>
   )
