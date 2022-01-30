@@ -62,39 +62,31 @@ export default function CreateActivity () {
         ...input,
         [e.target.name]: e.target.value
       })
-    // setErrors(
-    //   validate({
-    //     ...input,
-    //     [e.target.name]: e.target.value
-    //   })
-    // )
-    // console.log(input)
   }
 
   function handleSubmit (e) {
-  
-  e.preventDefault()
-  console.log(input)
-  if (
-    !input.name &&
-    !input.difficulty &&
-    !input.season &&
-    !input.duration &&
-    !input.countries.length
-  ) {
-    alert('Please complete all the fields')
-  } else {
-    dispatch(postActivity(input))
-    alert('Activity created')
-    setInput({
-      name: '',
-      difficulty: '',
-      duration: '',
-      season: '',
-      countries: []
-    })
-    history('/home')
-  }
+    e.preventDefault()
+    console.log(input)
+    if (
+      input.name &&
+      input.difficulty &&
+      input.season &&
+      input.duration &&
+      input.countries.length
+    ) {
+      dispatch(postActivity(input))
+      alert('Activity created')
+      setInput({
+        name: '',
+        difficulty: '',
+        duration: '',
+        season: '',
+        countries: []
+      })
+      history('/home')
+    } else {
+      alert('Please complete all the fields')
+    }
   }
 
   function handleSelect (e) {
@@ -102,10 +94,15 @@ export default function CreateActivity () {
       ...input,
       countries: [...input.countries, e.target.value]
     })
+    setErrors(
+      validate({
+        ...input,
+        countries: e.target.value
+      })
+    )
     console.log(input)
   }
 
-  
   function handleDelete (e) {
     setInput({
       ...input,
@@ -113,7 +110,7 @@ export default function CreateActivity () {
     })
   }
   return (
-    <div >
+    <div>
       <br />
       <div className='createActivity'>
         <Link to='/home' className='back'>
@@ -121,11 +118,12 @@ export default function CreateActivity () {
         </Link>
       </div>
       <h2>Create Activity</h2>
-      <form className="form" onSubmit={e => handleSubmit(e)}>
+      <form className='form' onSubmit={e => handleSubmit(e)}>
         <div>
           <label>Name</label>
           <br />
           <input
+            autoComplete='off'
             placeholder='name of activity...'
             type='text'
             name='name'
@@ -181,8 +179,8 @@ export default function CreateActivity () {
           {errors.difficulty && <p className='error'>{errors.difficulty}</p>}
         </div>
         <br />
-        
-          <div>
+
+        <div>
           <label>Season</label>
           <br />
           <input
@@ -220,11 +218,11 @@ export default function CreateActivity () {
           {errors.season && <p className='error'>{errors.season}</p>}
           <br />
           <div>
-         
             <br />
             <label>Duration</label>
             <br />
             <input
+              autoComplete='off'
               placeholder='example: 4hs30min'
               name='duration'
               type='text'
@@ -238,25 +236,24 @@ export default function CreateActivity () {
             <select required onChange={e => handleSelect(e)}>
               <option className='optionActCon'>Select Country</option>
               {country.map(e => (
-                <option key={e.name}value={e.name} >{e.name}</option>
+                <option key={e.name} value={e.name}>
+                  {e.name}
+                </option>
               ))}
             </select>
           </div>
         </div>
 
-       
-        <button type='submit' >
-          Create
-        </button>
+        <button type='submit'>Create</button>
       </form>
       <div>
-      <ul>
-          <li>{input.countries.map(el => el)}</li>
-        </ul>
-        </div>
+        {/* <ul className='actCon'>
+          <li>{input.countries.map(el => el + ' ')}</li>
+        </ul> */}
+      </div>
       {input.countries.map(el => (
         <div className=''>
-          <p>{el}</p>
+          <p className='pais'>{el}</p>
           <button className='delete' onClick={() => handleDelete(el)}>
             Delete
           </button>
@@ -265,3 +262,5 @@ export default function CreateActivity () {
     </div>
   )
 }
+
+

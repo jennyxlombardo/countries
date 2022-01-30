@@ -2,7 +2,7 @@ import './country.css'
 import { Link } from 'react-router-dom'
 
 
-export default function Country ({ name, continents, image, id }) {
+export default function Country ({ name, continents, image, id, population }) {
   return (
     <div className='container'>
       <div className='card'>
@@ -20,6 +20,7 @@ export default function Country ({ name, continents, image, id }) {
         </Link>
         <h4>{continents}</h4>
         <h4>{id}</h4>
+        <h4>{population}</h4>
       </div>
     </div>
   )

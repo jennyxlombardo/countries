@@ -13,15 +13,14 @@ import './home.css'
 import { Link } from 'react-router-dom'
 
 export default function Home () {
-  
   return (
     <div>
       <div>
         <SearchBar />
       </div>
       <Link to='/activity/'>
-          <button className='caButton'>Create Activity</button>
-        </Link>
+        <button className='caButton'>Create Activity</button>
+      </Link>
       <div className='inputs'>
         <FilterContinents />
         <FilterCountries />
@@ -29,9 +28,10 @@ export default function Home () {
         <Population />
         <Order />
       </div>
-      <Countries />
-     
-      <ReLoad />
+      <div>
+        <Countries />
+        <ReLoad />
+      </div>
     </div>
   )
 }

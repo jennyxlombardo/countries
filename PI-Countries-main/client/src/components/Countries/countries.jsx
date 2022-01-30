@@ -6,7 +6,7 @@ import Country from '../Country/country'
 
 export default function Countries () {
   let countries = useSelector(state => state.filteredCountries)
-
+ // eslint-disable-next-line
   const dispatch = useDispatch()
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -16,10 +16,12 @@ export default function Countries () {
   // const indexedFirst = indexedLast - countryPerPage
   // const currentCountry = countries.slice(indexedFirst, indexedLast)
 
-  const [countriesPerPage, setCountriesPerPage] = useState(10)
+  const [countriesPerPage, setCountriesPerPage] = useState(9)
   const indexLast = currentPage * countriesPerPage
   const indexFirst = indexLast - countriesPerPage
   const currentCountries = countries.slice(indexFirst, indexLast)
+
+
 
   const pagination = pageNumber => {
     setCurrentPage(pageNumber)
@@ -36,6 +38,7 @@ export default function Countries () {
                 image={el.image}
                 continents={el.continents}
                 id={el.id}
+                population={el.population}
               />
             )
           })}

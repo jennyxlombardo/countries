@@ -15,7 +15,7 @@ module.exports = sequelize => {
       primaryKey: true,
       allowNull: false
     },
-    flags: {
+    image: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -32,7 +32,7 @@ module.exports = sequelize => {
       allowNull: false
     },
     capital: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false
     },
     region: {

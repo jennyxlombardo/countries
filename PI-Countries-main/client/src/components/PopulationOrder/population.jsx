@@ -12,6 +12,7 @@ export default function Population () {
 
   useEffect(() => {
     dispatch(orderByPopulation(orderPopulation))
+     // eslint-disable-next-line
   }, [orderPopulation])
 
   function handlePopulationSort (e) {

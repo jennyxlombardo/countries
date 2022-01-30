@@ -1,10 +1,9 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { countryDetails, getActivity } from '../../redux/actions'
+import { countryDetails } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import './details.css'
-
 
 export default function CountryDetails (props) {
   console.log(props)
@@ -15,18 +14,16 @@ export default function CountryDetails (props) {
 
   useEffect(() => {
     dispatch(countryDetails(id))
-   
-  }, [dispatch])
+     // eslint-disable-next-line
+  }, [id, dispatch])
 
   const myCountry = useSelector(state => state.detail)
   return (
     <div>
       <div className='btns'>
-        <Link to= '/home/'>
+        <Link to='/home/'>
           <button className='bkButton'>Back</button>
         </Link>
-
-       
       </div>
       {myCountry ? (
         <div className='details'>
@@ -56,10 +53,14 @@ export default function CountryDetails (props) {
               </div>
             )
           })}
+          
         </div>
       ) : (
         <div>loading ...</div>
       )}
+      <Link to='/home/'>
+        <button className='bkButton'>Back</button>
+      </Link>
     </div>
   )
 }
